@@ -234,7 +234,9 @@ def parse_param_signature(sig: str, location):
 
 def parse_type_signature(sig: str, location):
     """ Parse a type declaration or usage signature """
-    match = CLASS_SIG_RE.match(sig.strip())
+    match = False
+    if sig is not None:
+        match = CLASS_SIG_RE.match(sig.strip())
     if not match:
         logger.warning(f'Type signature invalid: {sig}', location=location)
         return sig, None, None, None, None
