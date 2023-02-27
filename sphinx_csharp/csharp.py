@@ -800,6 +800,10 @@ class CSharpDomain(Domain):
                      typ, target, node, contnode):
         targets = []
         parents = []
+
+        if node.attributes["refdomain"] != self.name:
+            return None
+
         # Search in this namespace, note parent may not be where the target resides
         if node.get('cs:parent') is not None:
             parts = node['cs:parent'].split('.')
