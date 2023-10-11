@@ -53,7 +53,7 @@ VAR_PARAM_SIG_RE = re.compile(
     r'^' + PARAM_MODIFIERS_RE.pattern + TYPE_RE.pattern + r'\s+(?P<name>[^\s<{=]+)\s*(?:=\s*(?P<value>.+))?$')
 
 PROP_SIG_RE = re.compile(
-    r'^([^\s]+\s+)*([^\s]+)\s+([^\s]+)\s*{\s*(get;)?\s*(set;)?\s*}\s*=?\s*(.+)?\s*$')
+    r'^(\w+\s+)*([\w.\[\]]+(<.*>)?)\s+(\w+)\s*\{\s*(get;)?\s*(set;)?\s*\}\s*=?\s*(.+)?\s*$')
 
 IDXR_SIG_RE = re.compile(
     r'^((?:(?:' + MODIFIERS_RE_SIMPLE +
@@ -191,12 +191,12 @@ def parse_property_signature(sig: str, location):
 
     groups = match.groups()
     if groups[0] is not None:
-        modifiers = [x.strip() for x in groups[:-5]]
-        groups = groups[-5:]
+        modifiers = [x.strip() for x in groups[:-6]]
+        groups = groups[-6:]
     else:
         modifiers = []
         groups = groups[1:]
-    typ, name, getter, setter, default_val = groups
+    typ, _, name, getter, setter, default_val = groups
 
     if CSDebug.parse_prop:
         logger.info(f"parsed prop: {modifiers, typ, name, getter is not None, setter is not None}")
