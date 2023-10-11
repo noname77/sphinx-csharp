@@ -19,6 +19,7 @@ class ExternalRefsData:
         'int',
         'long',
         'uint',
+        'ushort',
         'ulong',
         'float',
         'double',
