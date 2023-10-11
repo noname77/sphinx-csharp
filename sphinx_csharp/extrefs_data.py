@@ -13,18 +13,28 @@ class ExternalRefsData:
         '&',
         'void',
 
-        # Built-in types
-        'string',
+        # Built-in value types 
+        # https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/built-in-types
         'bool',
-        'int',
-        'long',
-        'uint',
-        'ushort',
-        'ulong',
-        'float',
-        'double',
         'byte',
+        'sbyte',
+        'char',
+        'decimal',
+        'double',
+        'float',
+        'int',
+        'uint',
+        'nint',
+        'nuint',
+        'long',
+        'ulong',
+        'short',
+        'ushort',
+        
+        # Built-in reference types
         'object',
+        'string',
+        'dynamic',
     ]
 
     """
